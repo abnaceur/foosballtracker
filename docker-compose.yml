@@ -1,0 +1,51 @@
+version: '2'
+services:  
+  server_dev:
+    container_name: ${PROJECT_NAME}_server
+    build: ./server/
+    environment:
+      - VIRTUAL_HOST=api.${PROJECT_NAME}.local
+    volumes : 
+      - ./server/:/usr/src/app:rw
+    working_dir: /usr/src/app
+    restart: always
+    ports:
+      - "3000:3000"
+    command: /bin/sh -c "install_deps.sh"
+    links:
+      - "mysql:${PROJECT_NAME}_phpmyadmin"
+      
+  mysql:
+    image: mysql:5.7
+    env_file:
+      - .env
+    volumes:
+      - ./.docker/data/mysql/:/var/lib/mysql
+      - ./.docker/logs/mysql/:/var/log/mysql
+    ports:
+      - "3307:3306"
+    container_name: ${PROJECT_NAME}_mysql
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      -  8080:80
+    env_file:
+      - .env
+    environment:
+      PMA_HOST: mysql
+      VIRTUAL_HOST: phpmyadmin.${PROJECT_NAME}.local  
+    container_name: ${PROJECT_NAME}_phpmyadmin
+
+  client_dev:
+    container_name: ${PROJECT_NAME}_app
+    build: client/
+    working_dir: /usr/src/app
+    environment:
+      - VIRTUAL_HOST=app.${PROJECT_NAME}.local
+    volumes : 
+      - ./client/:/usr/src/app:rw
+    ports:
+      - 5000:5000
+    command: /bin/sh -c "install_deps.sh"
+  
