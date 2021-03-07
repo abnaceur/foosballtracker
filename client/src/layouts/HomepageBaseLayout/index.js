@@ -5,11 +5,13 @@ import BaseLayout from "../base";
 
 // Style
 import { PageContent } from "./style";
+import SideNavbar from '../../components/templates/sideNavbar';
 
 const HomepageBaseLayout = ({ children, ...rest }) => {
   return (
     <BaseLayout {...rest}>
       <PageContent>
+      <SideNavbar/>
         {children}
       </PageContent>
     </BaseLayout>
