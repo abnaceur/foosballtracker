@@ -10,8 +10,12 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 // Icons Components
-import HomeIcon from '../../atoms/icons/home'
+import HomeIcon from '../../atoms/icons/home';
 import MenuIcon from '../../atoms/icons/menu'
+import SportsSoccerIcon from '../../atoms/icons/sportsSoccer';
+import EqualizerIcon from '../../atoms/icons/equalizerIcon';
+import HistoryIcon from '../../atoms/icons/historyIcon';
+import SettingsIcon from '../../atoms/icons/settingsIcon';
 
 // Styles
 import {
@@ -85,12 +89,7 @@ const SideNavbar = () => {
 
         <Wrapper>
           <ListCustom>
-            <ListItemCustomHome
-              href="/"
-              key="home"
-            >
-            </ListItemCustomHome>
-
+  
             <ListItemCustom
               activeClassName="isActive"
               to="/demo/Homepage"
@@ -98,16 +97,65 @@ const SideNavbar = () => {
             >
               <ListItemIconCustom
               >
-
                 <HomeIconWrapper >
                   <HomeIcon />
                 </HomeIconWrapper>
-
               </ListItemIconCustom>
               <ListItemTextCustom primary="Dashboard" />
             </ListItemCustom>
 
+            <ListItemCustom
+              activeClassName="isActive"
+              to="/demo/match"
+              key="Match"
+            >
+              <ListItemIconCustom>
+                <HomeIconWrapper >
+                  <SportsSoccerIcon />
+                </HomeIconWrapper>
+              </ListItemIconCustom>
+              <ListItemTextCustom primary="New match" />
+            </ListItemCustom>
 
+            <ListItemCustom
+              activeClassName="isActive"
+              to="/demo/ranking"
+              key="Ranking"
+            >
+              <ListItemIconCustom>
+                <HomeIconWrapper >
+                  <EqualizerIcon />
+                </HomeIconWrapper>
+              </ListItemIconCustom>
+              <ListItemTextCustom primary="Ranking" />
+            </ListItemCustom>
+
+            <ListItemCustom
+              activeClassName="isActive"
+              to="/demo/history"
+              key="History"
+            >
+              <ListItemIconCustom>
+                <HomeIconWrapper >
+                  <HistoryIcon />
+                </HomeIconWrapper>
+              </ListItemIconCustom>
+              <ListItemTextCustom primary="History" />
+            </ListItemCustom>
+
+            <ListItemCustom
+              activeClassName="isActive"
+              to="/demo/settings"
+              key="Settings"
+            >
+              <ListItemIconCustom>
+                <HomeIconWrapper >
+                  <SettingsIcon />
+                </HomeIconWrapper>
+              </ListItemIconCustom>
+              <ListItemTextCustom primary="Settings" />
+            </ListItemCustom>
+                        
           </ListCustom>
         </Wrapper>
       </DrawerCustom>

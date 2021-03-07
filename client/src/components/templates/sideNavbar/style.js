@@ -120,7 +120,7 @@ export const ListItemCustomHome = styled.a`
     border-radius: 6px;
     transition: all .2s ease-out;
     &:first-child{
-      margin: 0 0 30px 7px;
+      margin: 0 0 10px 7px;
     }
     &:hover,
     &.isActive{
@@ -156,7 +156,7 @@ export const ListItemCustom = styled(NavLink)`
     border-radius: 6px;
     transition: all .2s ease-out;
     &:first-child{
-      margin: 0 0 30px 7px;
+      margin: 0 0 10px 7px;
     }
     &:hover,
     &.isActive{
