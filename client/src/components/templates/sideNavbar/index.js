@@ -92,7 +92,7 @@ const SideNavbar = () => {
   
             <ListItemCustom
               activeClassName="isActive"
-              to="/demo/Homepage"
+              to="/dashboard"
               key="Homepage"
             >
               <ListItemIconCustom
@@ -106,7 +106,7 @@ const SideNavbar = () => {
 
             <ListItemCustom
               activeClassName="isActive"
-              to="/demo/match"
+              to="/match"
               key="Match"
             >
               <ListItemIconCustom>
@@ -119,7 +119,7 @@ const SideNavbar = () => {
 
             <ListItemCustom
               activeClassName="isActive"
-              to="/demo/ranking"
+              to="/ranking"
               key="Ranking"
             >
               <ListItemIconCustom>
@@ -132,7 +132,7 @@ const SideNavbar = () => {
 
             <ListItemCustom
               activeClassName="isActive"
-              to="/demo/history"
+              to="/history"
               key="History"
             >
               <ListItemIconCustom>
@@ -145,7 +145,7 @@ const SideNavbar = () => {
 
             <ListItemCustom
               activeClassName="isActive"
-              to="/demo/settings"
+              to="/setting"
               key="Settings"
             >
               <ListItemIconCustom>
