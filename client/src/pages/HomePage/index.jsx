@@ -4,13 +4,32 @@ import React from 'react';
 import HomepageBaseLayout from '../../layouts/HomepageBaseLayout';
 
 // Styles
-import { Container } from './style';
+import { 
+  Container,
+  StatsCards,
+  StatsTitle,
+  StatCard
+ } from './style';
 
 const HomePage = () => {
   return (
     <HomepageBaseLayout id='dashboardLayout' className='dashboardLayout'>
       <Container>
-       <h1>Home Page</h1>
+        <StatsTitle>
+          Stats
+        </StatsTitle>
+        <StatsCards>
+          <StatCard>
+            <span>0</span>
+            <p>Matches played</p>
+          </StatCard>
+
+          <StatCard>
+            <span>0</span>
+            <p>Active players</p>
+          </StatCard>
+        </StatsCards>
+
       </Container>
     </HomepageBaseLayout>
   );
