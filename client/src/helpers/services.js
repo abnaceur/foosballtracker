@@ -1,8 +1,7 @@
-import endpointAPI from '../../helpers/api';
+import endpointAPI from '../helpers/api';
 import axios from 'axios';
 
 export const createPlayer = (data) => {
-
     return new Promise((resolve, reject) => {
         let url = endpointAPI.addNewPlayerApi;
 
@@ -19,7 +18,6 @@ export const createPlayer = (data) => {
 
 
 export const getPlayers = (data) => {
-
     return new Promise((resolve, reject) => {
         let url = endpointAPI.getPlayerApi;
 

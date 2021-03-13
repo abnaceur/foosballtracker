@@ -18,7 +18,7 @@ import {
 // Import services
 import { 
   createPlayer,
-  getPlayers } from './services';
+  getPlayers } from '../../helpers/services';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
