@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PlayersListItems() {
+
+export default function PlayersListItems({ playerList }) {
   const classes = useStyles();
   const [checked, setChecked] = React.useState([1]);
 
@@ -35,25 +36,18 @@ export default function PlayersListItems() {
 
   return (
     <List dense className={classes.root}>
-      {[0, 1, 2, 3].map((value) => {
+      {playerList.map((value) => {
         const labelId = `checkbox-list-secondary-label-${value}`;
         return (
           <ListItem key={value} button>
             <ListItemAvatar>
               <Avatar
-                alt={`Avatar n°${value + 1}`}
-                src={`/static/images/avatar/${value + 1}.jpg`}
+                alt={value.name}
+                src={`/static/avatar/${value + 2}.jpg`}
               />
             </ListItemAvatar>
-            <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-            <ListItemSecondaryAction>
-              <Checkbox
-                edge="end"
-                onChange={handleToggle(value)}
-                checked={checked.indexOf(value) !== -1}
-                inputProps={{ 'aria-labelledby': labelId }}
-              />
-            </ListItemSecondaryAction>
+            <ListItemText id={labelId} 
+            primary={`${value.name}`} />
           </ListItem>
         );
       })}

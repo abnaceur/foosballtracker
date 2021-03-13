@@ -59,7 +59,7 @@ app.use((req, res, next) => {
 
 // Routes
 var indexRouter = require('./api/routes/index');
-var userRouter = require('./api/routes/user');
+var playerRouter = require('./api/routes/player');
 
 // Database tables initiation
 initDatabase.initDatabaseTables(db)
@@ -81,7 +81,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Call routes API
 app.use('/', indexRouter);
-app.use('/api/v1/users', userRouter);
+app.use('/api/v1', playerRouter);
 
 //Use hamlet 
 app.use(helmet())
