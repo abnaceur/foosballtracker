@@ -3,7 +3,6 @@ import { Title } from '@material-ui/icons';
 
 // Layout
 import MatchPageBaseLayout from '../../layouts/MatchPageBaseLayout';
-import PersonIcon from '@material-ui/icons/Person';
 import Button from '@material-ui/core/Button';
 
 // Styles
@@ -14,9 +13,6 @@ import {
   Team1,
   Team2,
   PlayersList,
-  PlayerItem,
-  PlInfo,
-  Teams
 } from './style';
 
 // Import services
@@ -24,10 +20,25 @@ import {
   getPlayers
 } from '../../helpers/services';
 
+// Import components
+import PlayersListItems from './components/PlayersList';
+import GameContent from './components/GameContent';
+
 const MatchPage = () => {
   const [playersList, setPlayerList] = useState([]);
   const [gamePlayers, setGamePlayers] = useState([]);
-  const [gameTitle, setGameTitle] = useState("Players List")
+  const [gameStart, setGameStart] = useState(false)
+  const [gameTitle, setGameTitle] = useState("Players List");
+  let [score, setScore] = useState({
+    t1: {
+      total: 0
+    },
+    t2: {
+      total: 0
+    }
+  });
+  const [trackTime, setTrackTime] = useState([0, 0]);
+
   let [players, setPlayersName] = useState([]);
   let [showTeam, setShowTeam] = useState({
     t1: true,
@@ -72,6 +83,7 @@ const MatchPage = () => {
   useEffect(() => {
     let players = [];
 
+    // TODO to be refactored
     for (let i = 1; i <= 2; i++) {
       players.push(gamePlayers.filter((a) =>
         a.type == (i % 2 ? "o" : "d")
@@ -91,7 +103,30 @@ const MatchPage = () => {
   const updateStat = () => { setUpdate({}) };
 
   const handleStartGame = (e) => {
+    e.preventDefault();
+    setGameStart(true);
+    setGameTitle("Game on go !");
+    setTrackTime([Date.now(), 0]);
+  }
 
+  const handleScore = (e, tm, name) => {
+    e.preventDefault();
+    // alert(score[tm][name])
+    score[tm][name] = score[tm][name] === undefined ? 1 : score[tm][name] + 1;
+    score[tm].total = score[tm].total + 1;
+    setScore(score);
+    if (score[tm].total === 6) {
+      tm === "t1"
+        ? alert(`TEAM 1 ${players[0]} and ${players[1]} WON`)
+        : alert(`TEAM 2 ${players[2]} and ${players[3]} WON`);
+
+      setGameTitle("Players List");
+      setGameStart(false);
+      setTrackTime([trackTime[0], Date.now()]);
+
+      // Send data to be saved
+    }
+    updateStat();
   }
 
   return (
@@ -99,50 +134,44 @@ const MatchPage = () => {
       <Container>
 
         {/* Header */}
-        <Header>
-          <InfoPos> Defense + Offense </InfoPos>
-          <Team1>Team 1 : {players[0] || "--"} + {players[1] || "--"}
-          </Team1>
-          <Team2>Team 2 : {players[2] || "--"} + {players[3] || "--"}</Team2>
-        </Header>
+        {gamePlayers.length < 4 ?
+          <Header>
+            <InfoPos> Defense + Offense </InfoPos>
+            <Team1>Team 1 : {players[0] || "--"} + {players[1] || "--"}
+            </Team1>
+            <Team2>Team 2 : {players[2] || "--"} + {players[3] || "--"}</Team2>
+          </Header> : null}
+
+        {/* Game on */}
+        {gamePlayers.length === 4 ?
+          <GameContent
+            gameStart={gameStart}
+            handleScore={handleScore}
+            players={players}
+            score={score}
+          />
+          : null}
 
         <PlayersList>
           <InfoPos>
             {gamePlayers.length === 4 ?
               <Button
-                onClick={(e) => handleStartGame(e)}
+                onClick={(e) => !gameStart ? handleStartGame(e) : alert("I can not stop, I am just a test challenge")}
                 variant="contained"
                 color="primary">
-                Start
-          </Button>
+                {!gameStart ? "Start" : "Stop"}
+              </Button>
               : null} {" "}
             {gameTitle}
-
           </InfoPos>
-          {playersList && playersList.length > 0 ?
-            playersList.map((pl, idx) => {
-              return gamePlayers.filter(a =>
-                a.player.id === pl.id).length === 0 ?
-                <PlayerItem key={idx}>
-                  <PlInfo>
-                    <PersonIcon style={{ fontSize: "14px" }} />
-                    {pl.name}
-                  </PlInfo>
-                  <Teams>
-                    <React.Fragment>
-                      {showTeam["t1"] && gamePlayers.filter(a =>
-                        a.player.id === pl.id) && <span
-                          onClick={(e) => handleGamePls(e, pl, "t1")}>
-                          Team1</span>}
 
-                      {showTeam["t2"] && <span
-                        onClick={(e) => handleGamePls(e, pl, "t2")}>
-                        Team2</span>}
-                    </React.Fragment>
-                  </Teams>
-                </PlayerItem>
-                : null
-            }) : null}
+
+          <PlayersListItems
+            showTeam={showTeam}
+            gamePlayers={gamePlayers}
+            handleGamePls={handleGamePls}
+            playersList={playersList} />
+
         </PlayersList>
 
       </Container>

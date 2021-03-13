@@ -62,3 +62,42 @@ export const Teams = styled.span`
     }
   }
 `
+
+export const GameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 400px;
+`
+export const TmRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+`
+export const TmPlayers = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  span {
+    padding: 10px 30px;
+    font-size: 28px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: #2196F3;  
+    color: white;
+    &:hover {
+      background-color: black;    
+    }
+  }
+`
+
+export const TmScore = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: bold;
+  `
