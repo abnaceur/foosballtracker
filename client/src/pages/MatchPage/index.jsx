@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Title } from '@material-ui/icons';
+import moment from 'moment';
 
 // Layout
 import MatchPageBaseLayout from '../../layouts/MatchPageBaseLayout';
@@ -23,6 +23,9 @@ import {
 // Import components
 import PlayersListItems from './components/PlayersList';
 import GameContent from './components/GameContent';
+
+// Impoert services
+import { createGame } from '../../helpers/services';
 
 const MatchPage = () => {
   const [playersList, setPlayerList] = useState([]);
@@ -109,7 +112,7 @@ const MatchPage = () => {
     setTrackTime([Date.now(), 0]);
   }
 
-  const handleScore = (e, tm, name) => {
+  const handleScore = async (e, tm, name) => {
     e.preventDefault();
     // alert(score[tm][name])
     score[tm][name] = score[tm][name] === undefined ? 1 : score[tm][name] + 1;
@@ -122,9 +125,22 @@ const MatchPage = () => {
 
       setGameTitle("Players List");
       setGameStart(false);
-      setTrackTime([trackTime[0], Date.now()]);
 
       // Send data to be saved
+      let data = {
+        players: players,
+        t1: [players[0],players[1]],
+        t2: [players[2],players[3]],
+        winner: tm === "t1" ? "t1" : "t2",
+        looser: tm === "t1" ? "t2" : "t1",
+        startAt: moment(trackTime[0]).format("MM/DD/YYYY hh:mm:ss"),
+        endAt: moment(Date.now()).format("MM/DD/YYYY hh:mm:ss"),
+        duration: moment(Date.now() - trackTime[0]).format("mm:ss"),
+        score,
+      }
+      console.log("data =>", data);
+      let response = await createGame(data);
+
     }
     updateStat();
   }

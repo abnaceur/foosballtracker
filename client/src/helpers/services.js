@@ -32,3 +32,18 @@ export const getPlayers = (data) => {
     })
 };
 
+
+export const createGame = (data) => {
+    return new Promise((resolve, reject) => {
+        let url = endpointAPI.addNewGameApi;
+
+        axios.post(url, {data})
+            .then(results => {
+                resolve(results.data)
+            })
+            .catch(err => {
+                return Promise.reject(err);
+            });
+
+    })
+};
