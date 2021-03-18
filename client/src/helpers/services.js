@@ -62,3 +62,18 @@ export const getGameStats = (data) => {
 
     })
 };
+
+export const getGameRanking = (data) => {
+    return new Promise((resolve, reject) => {
+        let url = endpointAPI.gameRankApi;
+
+        axios.post(url, {data})
+            .then(results => {
+                resolve(results.data)
+            })
+            .catch(err => {
+                return Promise.reject(err);
+            });
+
+    })
+};

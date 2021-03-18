@@ -8,7 +8,12 @@ gameStatsCrl = (req, res) => {
     gameService.getGameStats.infoGameStats(res);
 }
 
+gameRankingCrl = (req, res) => {
+    gameService.getGameRanking.infoGameRanking(res);
+}
+
 module.exports = {
     createGame,
+    gameRankingCrl,
     gameStatsCrl
 }

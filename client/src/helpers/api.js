@@ -7,6 +7,8 @@ const endpoint = {
     addNewPlayerApi: APP_API_URL + 'players/add',
     addNewGameApi: APP_API_URL + 'games/add',
     gameStataApi: APP_API_URL + 'games/stats',
+    gameRankApi: APP_API_URL + 'games/ranking',
+
     getFeebackByInfoEl: (eiId) => {
         return `${APP_API_URL}manager/${eiId}/feedbacks`
     },

@@ -52,6 +52,22 @@ module.exports = class GameDao {
         })
     }
 
+    async getRanking() {
+        return new Promise(async (resolve, reject) => {
+            let query = `SELECT player.name, 
+            SUM(CASE WHEN player.name = team.player1Name THEN team.pl1Goals ELSE 0 END) + \
+            SUM(CASE WHEN player.name = team.player2Name THEN team.pl2Goals ELSE 0 END) as goals, \
+            COUNT(CASE WHEN player.name = team.player1Name THEN team.pl1Goals ELSE NULL END) + \
+            COUNT(CASE WHEN player.name = team.player2Name THEN team.pl2Goals ELSE NULL END) as matches \
+            FROM player INNER JOIN team ON player.name=team.player1Name OR player.name=team.player2Name \
+            INNER JOIN game ON team.id=game.team1Id OR team.id=game.team2Id \ 
+            GROUP BY player.name ORDER BY goals DESC`;
+            let preparedQuery = await prepareQuery.prepareQuery(query, [])
+            let response = await this.execQuery(preparedQuery);
+            resolve(response);
+        })
+    }
+
     execQuery(queryEntiity) {
         return new Promise((resolve, reject) => {
             db.query(queryEntiity, function (error, result) {

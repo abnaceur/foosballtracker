@@ -19,7 +19,6 @@ const HomePage = () => {
 
   useEffect(() => {
     getGameStats().then(res => {
-      console.log("res ->", res);
       if (res && res.code == 200) {
         setStats(res.data);
       }

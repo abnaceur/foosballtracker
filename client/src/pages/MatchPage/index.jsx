@@ -140,7 +140,6 @@ const MatchPage = () => {
       }
 
       let response = await createGame(data);
-      console.log("respoe :", response);
       if (response.code === 200) {
         setGamePlayers([]);
         setGameStart(false)

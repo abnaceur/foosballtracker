@@ -3,9 +3,7 @@ const GameDao = require('../Dao/GameDao');
 
 async function addGame(data, res) {
     let gameDao = new GameDao();
-        
-    console.log(" -> ", data);
- 
+    
     let team1 = {
         player1Name: data.players[0],
         player2Name: data.players[1],
