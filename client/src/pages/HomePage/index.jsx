@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Layout
 import HomepageBaseLayout from '../../layouts/HomepageBaseLayout';
+
+// Iimport services
+import { getGameStats } from '../../helpers/services';
 
 // Styles
 import { 
@@ -12,6 +15,18 @@ import {
  } from './style';
 
 const HomePage = () => {
+  const [states, setStats] = useState({players: 0, matches: 0})
+
+  useEffect(() => {
+    getGameStats().then(res => {
+      console.log("res ->", res);
+      if (res && res.code == 200) {
+        setStats(res.data);
+      }
+    })
+  }, [])
+
+
   return (
     <HomepageBaseLayout id='dashboardLayout' className='dashboardLayout'>
       <Container>
@@ -20,12 +35,12 @@ const HomePage = () => {
         </StatsTitle>
         <StatsCards>
           <StatCard>
-            <span>0</span>
+            <span>{states.matches}</span>
             <p>Matches played</p>
           </StatCard>
 
           <StatCard>
-            <span>0</span>
+            <span>{states.players}</span>
             <p>Active players</p>
           </StatCard>
         </StatsCards>

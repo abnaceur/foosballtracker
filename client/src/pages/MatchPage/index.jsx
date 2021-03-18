@@ -129,8 +129,8 @@ const MatchPage = () => {
       // Send data to be saved
       let data = {
         players: players,
-        t1: [players[0],players[1]],
-        t2: [players[2],players[3]],
+        t1: [players[0], players[1]],
+        t2: [players[2], players[3]],
         winner: tm === "t1" ? "t1" : "t2",
         looser: tm === "t1" ? "t2" : "t1",
         startAt: moment(trackTime[0]).format("MM/DD/YYYY hh:mm:ss"),
@@ -138,9 +138,32 @@ const MatchPage = () => {
         duration: moment(Date.now() - trackTime[0]).format("mm:ss"),
         score,
       }
-      console.log("data =>", data);
-      let response = await createGame(data);
 
+      let response = await createGame(data);
+      console.log("respoe :", response);
+      if (response.code === 200) {
+        setGamePlayers([]);
+        setGameStart(false)
+        setGameTitle("Players List");
+        setScore({
+          t1: {
+            total: 0
+          },
+          t2: {
+            total: 0
+          }
+        });
+        setTrackTime([0, 0]);
+        setPlayersName([]);
+        setShowTeam({
+          t1: true,
+          t2: true,
+        });
+        setCount({
+          t1: 0,
+          t2: 0,
+        });
+      } else alert("An error occured !");
     }
     updateStat();
   }
@@ -171,12 +194,13 @@ const MatchPage = () => {
         <PlayersList>
           <InfoPos>
             {gamePlayers.length === 4 ?
-              <Button
-                onClick={(e) => !gameStart ? handleStartGame(e) : alert("I can not stop, I am just a test challenge")}
-                variant="contained"
-                color="primary">
-                {!gameStart ? "Start" : "Stop"}
-              </Button>
+              !gameStart ?
+                <Button
+                  onClick={(e) => !gameStart ? handleStartGame(e) : alert("I can not stop, I am just a test challenge")}
+                  variant="contained"
+                  color="primary">
+                  "Start"
+                </Button> : null
               : null} {" "}
             {gameTitle}
           </InfoPos>

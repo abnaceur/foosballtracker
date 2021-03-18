@@ -43,6 +43,14 @@ module.exports = class GameDao {
         return response.insertId;
     }
 
+    async getAll() {
+        return new Promise(async (resolve, reject) => {
+            let query = "SELECT * FROM game";
+            let preparedQuery = await prepareQuery.prepareQuery(query, [])
+            let response = await this.execQuery(preparedQuery);
+            resolve(response);
+        })
+    }
 
     execQuery(queryEntiity) {
         return new Promise((resolve, reject) => {

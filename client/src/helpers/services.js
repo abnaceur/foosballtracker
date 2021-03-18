@@ -47,3 +47,18 @@ export const createGame = (data) => {
 
     })
 };
+
+export const getGameStats = (data) => {
+    return new Promise((resolve, reject) => {
+        let url = endpointAPI.gameStataApi;
+
+        axios.post(url, {data})
+            .then(results => {
+                resolve(results.data)
+            })
+            .catch(err => {
+                return Promise.reject(err);
+            });
+
+    })
+};
