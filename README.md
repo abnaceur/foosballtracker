@@ -19,6 +19,15 @@
 Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
 </p>
 
+### Features
+* API documentation after starting the project visit : http://localhost:3000/docs/#/ (Just some documentation for the sake of this assigment).
+* HomePage : - Shows simple data like number of match played / players added.
+* Setting page : - Add new players.
+* Match page : - Construct teams and start a match.
+* Ranking page / sections 1 : - List players match(nb) / Goals(nb) / Points gained, sorted by goals.
+* Ranking page / sections 2 : - List teams with Win/lost informations.
+* Logs page : - Display list of logs (Teams, Score per team, Team members, start date, Score per player, duration of the game)
+
 ## Built With
 
 * Node 12.20.1
@@ -49,7 +58,7 @@ Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
    docker-compose up --build
    ```
 
-4. Once the all containers are up visit
+4. Once all containers are up visit
    ```SH
    http://localhost:5000 fronend
    http://localhost:8080 PhpMyAdmin
@@ -77,6 +86,6 @@ Abdeljalil NACEUR - contact@naceur-abdeljalil.com
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [ReactJs]
-* [MaterialUI]
-* [Styled-component]
+* ReactJs
+* MaterialUI
+* Styled-component

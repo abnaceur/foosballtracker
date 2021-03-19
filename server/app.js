@@ -24,7 +24,7 @@ const swaggerOptions = {
       contact: {
         name: "Music Room Team !"
       },
-      servers: ["http://localhost:3000/api/v1/docs"]
+      servers: ["http://localhost:3000/docs"]
     }
   },
   // ['.routes/*.js']
