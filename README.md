@@ -21,22 +21,18 @@ Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
 
 ### Built With
 
-<ul>
-		<li>Node 12.20.1</li>
-		<li>ReactJS</li>
-		<li>MySQL</li>
-		<li>ExpressJS</li>
-</lu>
+* Node 12.20.1
+* ReactJS
+* MySQL
+* ExpressJS
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
 ### Prerequisites
-<ul>
-		<li>Docker version >= 20.10.3</li>
-		<li>docker-compose version >= 1.17.1</li>
-</ul>
+* Docker version >= 20.10.3
+* docker-compose version >= 1.17.1
 
 ### Installation
 
