@@ -6,11 +6,24 @@ async function infoGameRanking(res) {
     // Get ames
     let gameDao = new GameDao();
     let dataGame = await gameDao.getRanking();
+    let dataTean = await gameDao.getTeamRanking();
 
     helpers.responseStatus(
-        res, "List all players", 200, dataGame);
+        res, "Ranking list", 200, {
+            players: dataGame,
+            teams: dataTean
+        });
+}
+
+async function infoGameLogs(res) {
+    let gameDao = new GameDao();
+    let gameLogs = await gameDao.getLogsData();
+
+    helpers.responseStatus(
+        res, "Logs data", 200, gameLogs);
 }
 
 module.exports = {
-    infoGameRanking
+    infoGameRanking,
+    infoGameLogs
 }

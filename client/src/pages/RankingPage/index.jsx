@@ -104,10 +104,10 @@ const RankingPage = () => {
             onChangeIndex={handleChangeIndex}
           >
             <TabPanel value={value} index={0} dir={theme.direction}>
-              <PlayersList rankingsList={rankingsList}/>
+              <PlayersList rankingsList={rankingsList.players}/>
             </TabPanel>
             <TabPanel value={value} index={1} dir={theme.direction}>
-              <TeamsList />
+              <TeamsList rankingsList={rankingsList.teams} />
             </TabPanel>
             <TabPanel value={value} index={2} dir={theme.direction}>
               Coming soon ...

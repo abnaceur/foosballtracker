@@ -77,3 +77,18 @@ export const getGameRanking = (data) => {
 
     })
 };
+
+export const getGameLogs = (data) => {
+    return new Promise((resolve, reject) => {
+        let url = endpointAPI.gameLogsApi;
+
+        axios.post(url, {data})
+            .then(results => {
+                resolve(results.data)
+            })
+            .catch(err => {
+                return Promise.reject(err);
+            });
+
+    })
+};

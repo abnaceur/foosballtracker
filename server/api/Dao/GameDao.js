@@ -68,6 +68,33 @@ module.exports = class GameDao {
         })
     }
 
+    async getTeamRanking() {
+        return new Promise(async (resolve, reject) => {
+            let query = `
+            SELECT team.player1Name, 
+            team.player2Name,
+            COUNT(CASE WHEN team.id = game.looser THEN game.looser ELSE NULL END) as lost, 
+            COUNT(CASE WHEN team.id = game.winner THEN game.winner ELSE NULL END) as won 
+            FROM game INNER JOIN team ON game.team1Id=team.id OR game.team2Id=team.id 
+            GROUP BY team.player1Name, team.player2Name`;
+            let preparedQuery = await prepareQuery.prepareQuery(query, [])
+            let response = await this.execQuery(preparedQuery);
+            resolve(response);
+        })
+    }
+
+    async getLogsData() {
+        return new Promise(async (resolve, reject) => {
+            let query = `SELECT *
+            FROM game  JOIN team ON game.team1Id=team.id OR game.team2Id=team.id
+            ORDER BY game.startedAt DESC` 
+            let preparedQuery = await prepareQuery.prepareQuery(query, [])
+            let response = await this.execQuery(preparedQuery);
+            resolve(response);
+        })
+    }
+
+
     execQuery(queryEntiity) {
         return new Promise((resolve, reject) => {
             db.query(queryEntiity, function (error, result) {
