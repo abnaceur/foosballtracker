@@ -47,16 +47,11 @@
 	</lu>
 	<h5>Setup the project</h5>
 	<p>1 - Clone the project :</p>
-```
-https://github.com/abnaceur/foosballtracker.git
-```
+```git clone https://github.com/abnaceur/foosballtracker.git```
 	<p>Copy the environement variables : </p>
-```
-cp .env-template .env
-cp client/.env-template client/.env
-cp server/.env-template server/.env
-
-```
+```cp .env-template .env```
+```cp client/.env-template client/.env```
+```cp server/.env-template server/.env```
 	<p></p>
 </div>
 
