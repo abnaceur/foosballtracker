@@ -10,11 +10,39 @@
 </div>
 
 <div>
-	<h1>Description</h2>
+	<h2>Description</h2>
 	<p>This is a techniacal challenge assignment for a position at 
-	<a href="https://www.audacia.co/"> Audacia </a>
+	<a href="https://www.audacia.co/"> Audacia </a><br></br>
 	Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
 	</p>
+</div>
+
+<div>
+	<h2></h2>
+	<p>This is a techniacal challenge assignment for a position at 
+	<a href="https://www.audacia.co/"> Audacia </a><br></br>
+	Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
+	</p>
+</div>
+
+<div>
+	<h2>Team</h2>
+	<p>Abnaceur <b>contact@naceur-abdeljalil.com</b> </p>
+</div>
+
+<div>
+	<h2>Demo</h2>
+	<img src="./documents/demo-foosball.gif" width="300">
+</div>
+
+<div>
+	<h2>Technologies</h2>
+	<ul>
+		<li>Node 12.20.1</li>
+		<li>ReactJS</li>
+		<li>MySQL</li>
+		<li>ExpressJS</li>
+	</lu>
 </div>
 
 ## License
