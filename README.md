@@ -19,15 +19,13 @@
 Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
 </p>
 
-### Built With
+## Built With
 
 * Node 12.20.1
 * ReactJS
 * MySQL
 * ExpressJS
 
-
-<!-- GETTING STARTED -->
 ## Getting Started
 
 ### Prerequisites
@@ -45,7 +43,6 @@ Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
 	cp .env-template .env
 	cp client/.env-template client/.env
 	cp server/.env-template server/.env
-   ```
    ```
 3. Build the project from the root, get sure that ports 5000/3000/8080 are available
    ```sh
