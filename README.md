@@ -12,15 +12,8 @@
 <div>
 	<h2>Description</h2>
 	<p>This is a techniacal challenge assignment for a position at 
-	<a href="https://www.audacia.co/"> Audacia </a><br></br>
-	Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
 	</p>
-</div>
-
-<div>
-	<h2></h2>
-	<p>This is a techniacal challenge assignment for a position at 
-	<a href="https://www.audacia.co/"> Audacia </a><br></br>
+	<p><a href="https://www.audacia.co/"> Audacia </a>
 	Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
 	</p>
 </div>
@@ -43,6 +36,28 @@
 		<li>MySQL</li>
 		<li>ExpressJS</li>
 	</lu>
+</div>
+
+<div>
+	<h2>Build project for developement</h2>
+	<ul>
+		<h5>Requirements </h5>
+		<li>Docker version >= 20.10.3</li>
+		<li>docker-compose version >= 1.17.1</li>
+	</lu>
+	<h5>Setup the project</h5>
+	<p>1 - Clone the project :</p>
+```
+https://github.com/abnaceur/foosballtracker.git
+```
+	<p>Copy the environement variables : </p>
+```
+cp .env-template .env
+cp client/.env-template client/.env
+cp server/.env-template server/.env
+
+```
+	<p></p>
 </div>
 
 ## License
