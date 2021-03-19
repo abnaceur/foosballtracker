@@ -9,6 +9,14 @@
 
 </div>
 
+<div>
+	<h1>Description</h2>
+	<p>This is a techniacal challenge assignment for a position at 
+	<a href="https://www.audacia.co/"> Audacia </a>
+	Assignment details <a href="./documents/table-football-challenge.pdf">here</a>
+	</p>
+</div>
+
 ## License
 
 [MIT](LICENSE)
